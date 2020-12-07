@@ -1,0 +1,58 @@
+{% extends 'brownlab/base.html' %}
+
+{% load static %}
+
+{% block javascript %}
+
+	{# JQUERY FILE UPLOAD SCRIPTS #}
+	<script type="text/javascript" src="{% static 'brownlab/assets/js/upload/jquery.ui.widget.js' %}"></script>
+	<script type="text/javascript" src="{% static 'brownlab/assets/js/upload/jquery.iframe-transport.js' %}"></script>
+	<script type="text/javascript" src="{% static 'brownlab/assets/js/upload/jquery.fileupload.js' %}"></script>
+
+	{# UPLOAD PAGE SCRIPTS #}
+	<script type="text/javascript" src="{% static 'brownlab/assets/js/upload/upload.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+
+	<!-- Main -->
+	<article id="main">
+		<header class="special container">
+			<span class="icon solid fa-upload"></span>
+			<h2>
+				<strong>Upload STM Datasets</strong>
+			</h2>
+		</header>
+
+
+		<!-- Upload Section -->
+		<section class="wrapper style4 container">
+			<button type="button" class="js-upload-files">Upload Datasets</button>
+
+			<input id="fileupload" type="file" name="file" multiple style="display: none;" data-url="{% url 'upload' %}" data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+		</section>
+
+
+		<!-- Results Table -->
+		<section class="wrapper style2 container">
+			<table id="gallery">
+				<thead>
+					<tr>
+						<th>File</th>
+						<th>User</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for uploaded_file in recent_files %}
+						<tr>
+							<td>{{ uploaded_file.file.name }}</td>
+							<td>{{ uploaded_file.uploaded_by }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</section>
+	</article>
+
+{% endblock %}

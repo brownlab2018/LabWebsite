@@ -1,0 +1,37 @@
+{% extends 'brownlab/base.html' %}
+
+{% block content %}
+
+	<!-- Main -->
+	<article id="main">
+		<header class="special container">
+			<span class="icon solid fa-sign-in-alt"></span>
+			<h2>
+				<strong>Login To Upload Files</strong>
+			</h2>
+		</header>
+
+
+		<!-- Login Form -->
+		<section class="wrapper style4 container">
+			<form method="POST" action="">
+				{% csrf_token %}
+
+				<input type="text" name="username" placeholder="Username...">
+
+				<br />
+
+				<input type="password" name="password" placeholder="Password...">
+
+				<br />
+				
+				<button type="submit" value="Login">Login</button>
+
+				{% for message in messages %}
+					<p>{{ message }}</p>
+				{% endfor %}
+			</form>
+		</section>
+	</article>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'brownlab/base.html' %}
+
+{% block content %}
+
+	<!-- Main -->
+	<article id="main">
+		<header class="special container">
+			<span class="icon solid fa-image"></span>
+			<h2>
+				<strong>Dataset: {{ object.name }}</strong>
+			</h2>
+		</header>
+
+
+		<!-- Image and Parameters -->
+		<section class="wrapper style4 container">
+			<div class="row gtr-150">
+				<div class="col-8 col-12-narrower">
+					<div class="content">
+						<section>
+							<header>
+								<h1>
+									<!-- <strong>{{ object.comment }}</strong> -->
+									<strong>Dataset Scanning Parameters</strong>
+								</h1>
+							</header>
+
+							<img height="512" width="512" src="{{ object.xoimage.url }}">
+
+							<br />
+
+							<p>
+								<strong>Acquisition Date:</strong> {{ object.acq_date }}
+
+								<br />
+								<br />
+
+								<strong>Scan Size:</strong> {{ object.xysize_nm }} nm x {{ object.xysize_nm }} nm | {{ object.xysize_ang }} &#8491; x {{ object.xysize_ang }} &#8491;
+
+								<br />
+								<br />
+
+								<strong>X-Offset:</strong> {{ object.xoffset|floatformat:2 }} &#8491;
+
+								<br />
+								<br />
+
+								<strong>Y-Offset:</strong> {{ object.yoffset|floatformat:2 }} &#8491;
+
+								<br />
+								<br />
+
+								<strong>Setpoint:</strong> {{ object.setpoint|floatformat:2 }} nA
+
+								<br />
+								<br />
+
+								<strong>Sample Bias:</strong> {{ object.bias|floatformat:3 }} V
+
+								<br />
+								<br />
+
+								<strong>Comment:</strong> {{ object.comment }}
+							</p>
+						</section>
+					</div>
+				</div>
+
+				<div class="col-4 col-12-narrower">
+					<div class="sidebar">
+						<section>
+							<header>
+								<h2>
+									<strong>Download Images</strong>
+								</h2>
+							</header>
+						</section>
+
+						<section>
+							<header>
+								<h3>Auto Plane Subtract</h3>
+							</header>
+
+							<img src="{{ object.image.url }}" alt="" />
+
+							<footer>
+								<ul class="buttons">
+									<li>
+										<a href="{{ object.image.url }}" download="">Download</a>
+									</li>
+								</ul>
+							</footer>
+						</section>
+
+						<section>
+							<header>
+								<h3>Auto X-Offset</h3>
+							</header>
+
+							<img src="{{ object.xoimage.url }}" alt="" />
+
+							<footer>
+								<ul class="buttons">
+									<li>
+										<a href="{{ object.xoimage.url }}" download="">Download</a>
+									</li>
+								</ul>
+							</footer>
+						</section>
+					</div>
+				</div>
+			</div>
+		</section>
+	</article>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'brownlab/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<!-- Banner -->
+	<section id="banner">
+		<div class="inner">
+			<header>
+				<h2>Brown STM Lab</h2>
+				<p>
+					<br />
+					"There's plenty of
+					<br />
+					room at the bottom."
+					<br />
+					<strong>- Richard Feynman</strong>
+				</p>
+
+				<footer>
+					<ul class="buttons stacked">
+						<li>
+							<a href="#main" class="button fit scrolly">Learn More</a>
+						</li>
+					</ul>
+				</footer>
+			</header>
+		</div>
+	</section>
+
+
+	<!-- Main -->
+	<article id="main">
+		<header class="special container">
+			<span class="icon solid fa-atom"></span>
+			<h2>
+				We utilize <strong>Physical Chemistry</strong> and <strong>Surface Science</strong> techniques
+				<br />
+				to study self-assembly at the atomic level.
+			</h2>
+			<p>
+				Using the power of scanning tunneling microscopy (<strong>STM</strong>) our research group investigates the spontaneous organization of
+				<br />
+				molecules at the gas/solid and liquid/solid interfaces under non-equilibrium growth conditions.
+			</p>
+		</header>
+
+
+		<!-- One -->
+		<section class="wrapper style2 container special-alt">
+			<div class="row gtr-50">
+				<div class="col-9 col-12-narrower">
+					<header>
+						<h2>
+							This <strong>Image of the Day</strong> was taken with one of our <strong>Home-Built STMs</strong>.
+						</h2>
+						<p>
+							Interested in this image? You can view all of the parameters and associated data by clicking directly on the image. <strong>Please Note:</strong> All images shown are automatically processed using either a plane subtract or an x-filter. If you wish to view the rawdata, you can contact us for the original ".sm4" file.
+						</p>
+						<footer>
+							<ul class="buttons">
+								<li>
+									<a href="{% url 'browse' %}" class="button">Browse All Images</a>
+								</li>
+							</ul>
+						</footer>
+					</header>
+				</div>
+
+				<div class="col-3 col-12-narrower">
+					<a href="{{ featured_image.get_absolute_url }}">
+						<img src="{{ featured_image.xoimage.url }}" alt="" />
+
+						<h3 style="color: #fff;">
+							<strong>{{ featured_image.name }}</strong>
+						</h3>
+					</a>
+					<!-- <img src="{{ featured_image.xoimage.url }}" alt="" /> -->
+				</div>
+			</div>
+		</section>
+	</article>
+
+{% endblock %}

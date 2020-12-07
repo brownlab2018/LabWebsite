@@ -1,0 +1,71 @@
+{% extends 'brownlab/base.html' %}
+
+{% block content %}
+
+	<!-- Main -->
+	<article id="main">
+		<header class="special container">
+			<span class="icon solid fa-images"></span>
+			<h2>
+				<strong>Browse STM Datasets</strong>
+			</h2>
+
+			<p>
+				Here lies every dataset our group has ever obtained regardless of quality, and it is important to note that all images have either a plane subtract or x-filter applied automatically upon upoad. All data here is the property of the <strong>Brown STM Lab</strong> and <strong>Clarkson University</strong>. Under a Creative Commons Attribution License (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY</a>) all images are available for use, and we ask that citations adhere to the following format: "Ryan Brown (Brown STM Lab), Clarkson University, http://brownstmlab.herokuapp.com/datasets/browse/image_id".
+			</p>
+		</header>
+
+
+		<!-- Image Grid -->
+		<section class="wrapper style4 container special">
+			<div class="content">
+				<section>
+					<header>
+						<h3>
+							We have collected a total of <strong>{{ total_count }}</strong> datasets from Mar. 20, 2019 to {{ newest_data.acq_date }}
+						</h3>
+					</header>
+				</section>
+			</div>
+
+			<br />
+
+			<div class="row gtr-50">
+				{% for data in page_obj %}
+					<div class="col-4 col-12-narrower">
+						<div class="content">
+							<section>
+								<a href="{{ data.get_absolute_url }}"><img src="{{ data.xoimage.url }}" alt="" /></a>
+								<h3>
+									<a href="{{ data.get_absolute_url }}">{{ data.name }}</a>
+								</h3>
+							</section>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			<div class="row gtr-50">
+				<!-- Pagination -->
+				<div class="pagination">
+					<span class="step-links">
+						{% if page_obj.has_previous %}
+							<a href="?page=1">&laquo; First</a>
+							<a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+						{% endif %}
+
+						<span>
+							Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+						</span>
+
+						{% if page_obj.has_next %}
+							<a href="?page={{ page_obj.next_page_number }}">Next</a>
+							<a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+						{% endif %}
+					</span>
+				</div>
+			</div>
+		</section>
+	</article>
+
+{% endblock %}

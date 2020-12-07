@@ -1,0 +1,253 @@
+{% extends 'brownlab/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<!-- Main -->
+	<article id="main">
+		<header class="special container">
+			<span class="icon solid fa-microscope"></span>
+			<h2>
+				<strong>Our Instruments</strong>
+			</h2>
+			<p>
+				"If you can't explain it simply, you don't understand it well enough." - Albert Einstein
+			</p>
+		</header>
+
+
+		<!-- STM Operation -->
+		<section class="wrapper style4 container">
+			<div class="row gtr-50">
+				<div class="col-8 col-12-narrower">
+					<div class="content">
+						<section>
+							<a href="#" class="image featured" style="cursor: default;">
+								<img src="{% static 'brownlab/images/brownlab_STM_diagram.png' %}" alt="" />
+							</a>
+
+							<header>
+								<h3>
+									How It Works - <strong>Scanning Tunneling Microscopy</strong>
+								</h3>
+							</header>
+
+							<p>
+								The scanner of an STM consists of an atomically sharp metal tip and is housed in a piezoelectric tube. The tip is manipulated by applying a voltage to the tube to scan in the X-, Y-, and Z-direction. An STM operates on the principle of quantum tunneling. By applying a voltage bias to the sample when the tip is sufficiently close electrons are able to jump (tunnel) from the sample to the tip (or vice versa). The resulting tunneling current is amplified and displayed in the form of an image as the tip scans over the sample. The STM is sensitive to both the topography of the sample and the local density of states (LDOS). The equations below are adapted from the <a href="http://hoffman.physics.harvard.edu/research/STMtechnical.php" target="_blank">Hoffman Lab</a> at Harvard.
+							</p>
+
+							<p>
+								Applying a negative sample bias (-V) the total tunneling current from the sample to the tip is given by:
+								<br />
+								<br />
+								<a href="#" class="image featured" style="cursor: default;">
+									<img src="{% static 'brownlab/images/total_tunneling_current.gif' %}" alt="" />
+								</a>
+							</p>
+
+							<p>
+								The elastic tunneling current from sample to tip is given by:
+								<br />
+								<br />
+								<a href="#" class="image featured" style="cursor: default;">
+									<img src="{% static 'brownlab/images/elastic_tunneling_current.gif' %}" alt="" />
+								</a>
+							</p>
+
+							<p>
+								The tunneling current is fairly well approximated by:
+								<br />
+								<br />
+								<a href="#" class="image featured" style="cursor: default;">
+									<img src="{% static 'brownlab/images/tunneling_approx.gif' %}" alt="" />
+								</a>
+							</p>
+						</section>
+					</div>
+				</div>
+
+				<div class="col-4 col-12-narrower">
+					<div class="sidebar">
+						<section>
+							<header>
+								<h3>
+									<strong>Home-Built Instruments</strong>
+								</h3>
+							</header>
+						</section>
+
+						<section>
+							<a href="#vt-stm" class="image featured scrolly">
+								<img src="{% static 'brownlab/images/STM.jpg' %}" alt="" />
+							</a>
+
+							<header>
+								<h3>
+									<strong>VT-UHV STM</strong>
+								</h3>
+							</header>
+
+							<p>
+								Our variable-temperature ultrahigh vacuum scanning tunneling microscope (VT-UHV STM) is capable of achieving sub-liquid nitrogen temperatures. Click the button below for a more detailed description of this instrument.
+							</p>
+
+							<footer>
+								<ul class="buttons">
+									<li>
+										<a href="#vt-stm" class="button small scrolly">Learn More</a>
+									</li>
+								</ul>
+							</footer>
+						</section>
+
+						<section>
+							<a href="#ab-stm" class="image featured scrolly">
+								<img src="{% static 'brownlab/images/peltier_scope_1.jpg' %}" alt="" />
+							</a>
+
+							<header>
+								<h3>
+									<strong>Ambient STM</strong>
+								</h3>
+							</header>
+
+							<p>
+								Our ambient STM operates in either an N<sub>2</sub>-purged environment or the normal laboratory atmosphere at room temperature. Click the button below for a more detailed description of this instrument.
+							</p>
+
+							<footer>
+								<ul class="buttons">
+									<li>
+										<a href="#ab-stm" class="button small scrolly">Learn More</a>
+									</li>
+								</ul>
+							</footer>
+						</section>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- VT-UHV STM -->
+		<section id="vt-stm" class="wrapper style1 container">
+			<div class="row gtr-50">
+				<div class="col-12 col-12-narrower">
+					<div class="content">
+						<section>
+							<header>
+								<h2>
+									<strong>Variable-Temperature Ultrahigh Vacuum Scanning Tunnneling Microscope</strong>
+								</h2>
+							</header>
+						</section>
+
+						<section>
+							<p>
+								Our homebuilt variable-temperature ultrahigh vacuum scanning tunneling microscope (VT-UHV STM) is comprised of an STM chamber, preparation chamber, load-lock transfer system, and physical/vapor deposition chamber. The STM chamber, obtained from <a href="https://www.lesker.com/index.cfm" target="_blank">Kurt J. Lesker</a>, houses the scanner which is mounted in a commerically 3D printed silver mount (<a href="https://www.shapeways.com/" target="_blank">Shapeways, Inc.</a>). The silver mount is cooled to sub-liquid nitrogen temperatures by a two stage cryocooler with vibrational isolation (<a href="https://www.arscryo.com/" target="_blank">Advanced Research Systems, Inc.</a>).
+							</p>
+
+							<p>
+								The preparation chamber is equipped with a 2 kV ion gun (<a href="https://rbdinstruments.com/" target="_blank">RBD Instruments</a>) for Argon sputtering, as well as a HALO 201 RC mass spectrometer (<a href="https://www.hidenanalytical.com/" target="_blank">Hiden Analytical</a>) for residual gas analysis (RGA), temperature programmed desorption (TPD) experiments, and monitoring applications such as leak detection. Samples are secured in a custom machined molybdenum mount and heated using a coiled thoriated tungsten wire (<a href="https://www.goodfellow.com/" target="_blank">Goodfellow</a>).
+							</p>
+
+							<p>
+								The load-lock transfer system utilizes a manipulating tool afixed to a rotary-linear magnetic transfer arm with a 48-in stroke (<a href="https://mcallister.com/" target="_blank">McAllister Technical Services</a>) to move samples between the chambers. Multiple samples are able to be transfered in/out of vacuum by a 3D printed bronze shuttle afixed to a linear magnetic transfer arm with a 24-in stroke. The load-lock system is specifically designed so that samples can be changed without breaking vacuum, and was inspired by the design of <a href="https://chemistry.nd.edu/people/s-alex-kandel/" target="_blank">S. Alex Kandel at the University of Notre Dame</a>.
+							</p>
+						</section>
+					</div>
+				</div>
+			</div>
+
+			<div class="row gtr-50">
+				<div class="col-4 col-12-narrower">
+					<section>
+						<a href="#" class="image featured" style="cursor: default;">
+							<img src="{% static 'brownlab/images/STM_chamber.jpg' %}" alt="" />
+						</a>
+
+						<header>
+							<h3>STM Chamber</h3>
+						</header>
+					</section>
+				</div>
+
+				<div class="col-4 col-12-narrower">
+					<section>
+						<a href="#" class="image featured" style="cursor: default;">
+							<img src="{% static 'brownlab/images/prep_mount.jpg' %}" alt="" />
+						</a>
+
+						<header>
+							<h3>Preparation Chamber</h3>
+						</header>
+					</section>
+				</div>
+
+				<div class="col-4 col-12-narrower">
+					<section>
+						<a href="#" class="image featured" style="cursor: default;">
+							<img src="{% static 'brownlab/images/chambers.jpg' %}" alt="" />
+						</a>
+
+						<header>
+							<h3>UHV Chambers</h3>
+						</header>
+					</section>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- Ambient STM -->
+		<section id="ab-stm" class="wrapper style4 container">
+			<div class="row gtr-50">
+				<div class="col-12 col-12-narrower">
+					<div class="content">
+						<section>
+							<header>
+								<h2>
+									<strong>Ambient Scanning Tunneling Microscope</strong>
+								</h2>
+							</header>
+						</section>
+
+						<section>
+							<p>
+								This STM utilizes the inertial approach process known as the "slip-stick" process and operates under ambient conditions. The rigid design construction allows for atomic resolution with no external vibrational isolation and was inspired by the design of <a  href="https://chemistry.nd.edu/people/s-alex-kandel/" target="_blank">S. Alex Kandel at the University of Notre Dame</a>. The tip assembly is housed in a custom machined block of Invar-36 (<a href="https://www.edfagan.com/" target="_blank">Ed Fagan Inc.</a>). A platinum-iridium (Pt/Ir) wire serves as the tip, and is press-fit into a stainless steel capillary tube (<a href="https://www.mcmaster.com/" target="_blank">McMaster-Carr</a>). The capillary tube rests atop four tungsten carbide balls which are press-fit into a custom 3D printed silver tip carrier.
+							</p>
+						</section>
+					</div>
+				</div>
+			</div>
+
+			<div class="row gtr-50">
+				<div class="col-6 col-12-narrower">
+					<section>
+						<a href="#" class="image featured" style="cursor: default;">
+							<img src="{% static 'brownlab/images/peltier_scope_1.jpg' %}" alt="" />
+						</a>
+
+						<header>
+							<h3>Ambient Scope View 1</h3>
+						</header>
+					</section>
+				</div>
+
+				<div class="col-6 col-12-narrower">
+					<section>
+						<a href="#" class="image featured" style="cursor: default;">
+							<img src="{% static 'brownlab/images/peltier_scope_2.png' %}" alt="" />
+						</a>
+
+						<header>
+							<h3>Ambient Scope View 2</h3>
+						</header>
+					</section>
+				</div>
+			</div>
+		</section>
+	</article>
+
+{% endblock %}

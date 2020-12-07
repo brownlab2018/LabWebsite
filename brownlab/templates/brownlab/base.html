@@ -1,0 +1,152 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required Meta Tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+	<link rel="shortcut icon" type="image/png" href="{% static 'brownlab/images/favicon.png' %}" />
+
+
+	{% if title %}
+		<title>The Brown STM Lab | {{ title }}</title>
+	{% else %}
+		<title>The Brown STM Lab</title>
+	{% endif %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'brownlab/assets/css/main.css' %}" media="screen" />
+	<link rel="stylesheet" type="text/css" href="{% static 'brownlab/assets/css/main.css' %}" />
+</head>
+<body class="index is-preload">
+
+	<div id="page-wrapper">
+		<!-- Header -->
+		<header id="header">
+			<h1 id="logo">
+				<a href="{% url 'home' %}"><span>The</span> Brown STM Lab</a>
+			</h1>
+
+			<nav id="nav">
+				<ul>
+					{% if user.is_authenticated or user.is_staff %}
+						<li>
+							<a href="{% url 'home' %}">Home</a>
+						</li>
+						<li class="submenu">
+							<a href="#">About</a>
+							<ul>
+								<li>
+									<a href="{% url 'the-lab' %}">The Lab</a>
+								</li>
+								<li>
+									<a href="{% url 'instruments' %}">Instruments</a>
+								</li>
+								<!-- <li>
+									<a href="#">Current Projects</a>
+								</li> -->
+							</ul>
+						</li>
+						<li class="submenu">
+							<a href="#">Datasets</a>
+							<ul>
+								<li>
+									<a href="{% url 'browse' %}">Browse</a>
+								</li>
+								<li>
+									<a href="{% url 'search' %}">Search</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="{% url 'upload' %}">Upload</a>
+						</li>
+						<li>
+							<a href="{% url 'logout' %}">Logout</a>
+						</li>
+					{% else %}
+						<li>
+							<a href="{% url 'home' %}">Home</a>
+						</li>
+						<li class="submenu">
+							<a href="#">About</a>
+							<ul>
+								<li>
+									<a href="{% url 'the-lab' %}">The Lab</a>
+								</li>
+								<li>
+									<a href="{% url 'instruments' %}">Instruments</a>
+								</li>
+								<!-- <li>
+									<a href="#">Current Projects</a>
+								</li> -->
+							</ul>
+						</li>
+						<li class="submenu">
+							<a href="#">Datasets</a>
+							<ul>
+								<li>
+									<a href="{% url 'browse' %}">Browse</a>
+								</li>
+								<li>
+									<a href="{% url 'search' %}">Search</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="{% url 'login' %}">Login</a>
+						</li>
+					{% endif %}
+				</ul>
+			</nav>
+		</header>
+
+
+		<!-- Main Content -->
+		{% block content %}
+		{% endblock %}
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="icons">
+				<li>
+					<a href="https://github.com/brownlab2018/LabWebsite" target="_blank" class="icon brands circle fa-github">
+						<span class="label">Lab Github</span>
+					</a>
+				</li>
+			</ul>
+
+			<ul class="copyright">
+				<li>The Brown STM Lab</li>
+				<li>Design By: Nicholas Stucchi</li>
+			</ul>
+		</footer>
+	</div>
+
+
+
+
+
+
+
+
+
+	<!-- Scripts -->
+    <script src="{% static 'brownlab/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'brownlab/assets/js/jquery.dropotron.min.js' %}"></script>
+    <script src="{% static 'brownlab/assets/js/jquery.scrolly.min.js' %}"></script>
+    <script src="{% static 'brownlab/assets/js/jquery.scrollex.min.js' %}"></script>
+    <script src="{% static 'brownlab/assets/js/browser.min.js' %}"></script>
+    <script src="{% static 'brownlab/assets/js/breakpoints.min.js' %}"></script>
+    <script src="{% static 'brownlab/assets/js/util.js' %}"></script>
+    <script src="{% static 'brownlab/assets/js/main.js' %}"></script>
+
+
+    {% block javascript %}
+    {% endblock %}
+
+</body>
+</html>

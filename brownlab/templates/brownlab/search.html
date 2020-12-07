@@ -1,0 +1,157 @@
+{% extends 'brownlab/base.html' %}
+
+{% block content %}
+
+	<!-- Main -->
+	<article id="main">
+		<header class="special container">
+			<span class="icon solid fa-search">
+				<h2>
+					<strong>Search STM Datasets</strong>
+				</h2>
+			</span>
+		</header>
+
+
+		<!-- Search Form -->
+		<section class="wrapper style4 container special">
+			<form method="GET" action=".">
+				{% csrf_token %}
+
+				<table>
+					<tr>
+						<th>Newer Date</th>
+						<th></th>
+						<th>Older Date</th>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="date" id="acqDateStart" name="acq_date_start" placeholder="Enter Start Date">
+						</td>
+						<td> to </td>
+						<td>
+							<input type="date" id="acqDateEnd" name="acq_date_end" placeholder="Enter End Date">
+						</td>
+					</tr>
+
+					<tr>
+						<th>Minimum Scan Size (nm)</th>
+						<th></th>
+						<th>Maximum Scan Size (nm)</th>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="number" id="scanSizeMin" name="scan_size_min" placeholder="Enter Scan Size">
+						</td>
+						<td> to </td>
+						<td>
+							<input type="number" id="scanSizeMax" name="scan_size_max" placeholder="Enter Scan Size">
+						</td>
+					</tr>
+
+					<tr>
+						<th>Minimum Setpoint (nA)</th>
+						<th></th>
+						<th>Maximum Setpoint (nA)</th>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="number" id="setpointMin" name="setpoint_min" placeholder="Enter Setpoint">
+						</td>
+						<td> to </td>
+						<td>
+							<input type="number" id="setpointMax" name="setpoint_max" placeholder="Enter Setpoint">
+						</td>
+					</tr>
+
+					<tr>
+						<th>Minimum Sample Bias (V)</th>
+						<th></th>
+						<th>Maximum Sample Bias (V)</th>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="number" id="biasMin" name="bias_min" placeholder="Enter Bias">
+						</td>
+						<td> to </td>
+						<td>
+							<input type="number" id="biasMax" name="bias_max" placeholder="Enter Bias">
+						</td>
+					</tr>
+
+					<tr>
+						<th>Comment or Keyword</th>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="text" id="comment" name="comment" placeholder="Enter Comment/Keyword">
+						</td>
+					</tr>
+				</table>
+
+				<br />
+				<br />
+
+				<button type="submit">Submit</button>
+			</form>
+		</section>
+
+
+		<!-- Search Results -->
+		<section class="wrapper style4 container special">
+			<div class="content">
+				<section>
+					<header>
+						<h3>
+							<strong>{{ search_results_count }}</strong> of <strong>{{ total_count }}</strong> datasets displayed
+						</h3>
+					</header>
+				</section>
+			</div>
+
+			<br />
+
+			<div class="row gtr-50">
+				{% for data in page_obj %}
+					<div class="col-4 col-12-narrower">
+						<div class="content">
+							<section>
+								<a href="{{ data.get_absolute_url }}"><img src="{{ data.xoimage.url }}" alt="" /></a>
+								<h3>
+									<a href="{{ data.get_absolute_url }}">{{ data.name }}</a>
+								</h3>
+							</section>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			<div class="row gtr-50">
+				<!-- Pagination -->
+				<div class="pagination">
+					<span class="step-links">
+						{% if page_obj.has_previous %}
+							<a href="?page=1">&laquo; First</a>
+							<a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+						{% endif %}
+
+						<span>
+							Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+						</span>
+
+						{% if page_obj.has_next %}
+							<a href="?page={{ page_obj.next_page_number }}">Next</a>
+							<a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+						{% endif %}
+					</span>
+				</div>
+			</div>
+		</section>
+	</article>
+
+{% endblock %}
