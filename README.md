@@ -1,4 +1,1 @@
-# LabWebsite
-HTML and Django code for our lab website
-
-## The Brown STM Lab
+# The Brown STM Lab | Website Code
